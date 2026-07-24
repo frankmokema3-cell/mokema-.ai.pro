@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mokema AI Pro Dashboard</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+margin:0;
+background:#07111f;
+color:white;
+padding:20px;
+
+}
+
+
+.box{
+
+background:#111827;
+padding:25px;
+border-radius:20px;
+max-width:400px;
+margin:auto;
+text-align:center;
+box-shadow:0 0 20px #000;
+
+}
+
+
+h1{
+
+color:#00ff88;
+
+}
+
+
+.card{
+
+background:#1f2937;
+padding:15px;
+margin:15px 0;
+border-radius:10px;
+
+}
+
+
+select{
+
+width:100%;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
+
+}
+
+
+button{
+
+padding:12px;
+width:100%;
+background:#008cff;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+margin-top:10px;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#006dcc;
+
+}
+
+
+.signal{
+
+color:#00ff88;
+font-size:22px;
+margin-top:10px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="box">
+
+
+<h1>🚀 Mokema AI Pro</h1>
+
+
+<p id="username"></p>
+
+
+
+<div class="card">
+
+<strong>Status:</strong>
+
+<br>
+
+🟢 AI Ready
+
+</div>
+
+
+
+<div class="card">
+
+
+<strong>Select Market:</strong>
+
+<select id="market">
+
+<option>EUR/USD</option>
+<option>GBP/USD</option>
+<option>BTC/USD</option>
+<option>Volatility 75 Index</option>
+
+</select>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<strong>Balance</strong>
+
+<br>
+
+$0.00
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<strong>Market Signal</strong>
+
+
+<div class="signal" id="signal">
+
+Click "Analyze Market" to start.
+
+</div>
+
+
+</div>
+
+
+
+
+<button onclick="analyzeMarket()">
+
+Analyze Market
+
+</button>
+
+
+
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// Check login
+
+let user = localStorage.getItem("mokemaUser");
+
+
+if(!user){
+
+window.location="login.html";
+
+}
+
+
+
+// Display username
+
+document.getElementById("username").innerHTML =
+"👋 Welcome, " + user;
+
+
+
+
+
+// AI Signal Demo
+
+function analyzeMarket(){
+
+
+let signals=[
+
+"CALL 📈",
+
+"PUT 📉",
+
+"WAIT ⏳"
+
+];
+
+
+let result =
+
+signals[Math.floor(Math.random()*signals.length)];
+
+
+
+let market =
+
+document.getElementById("market").value;
+
+
+
+document.getElementById("signal").innerHTML =
+
+market + "<br>" + result;
+
+
+
+}
+
+
+
+
+
+// Logout
+
+function logout(){
+
+
+localStorage.removeItem("mokemaUser");
+
+
+window.location="login.html";
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+  </html>
